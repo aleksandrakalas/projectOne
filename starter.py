@@ -12,7 +12,8 @@ Created: 01/01/2023
 Completed: --/--/----
 """
 # Dictionary to keep track of moods that were inputted by user
-moods = {'Jan':[], 'Feb': [], 'Mar': [], 'Apr': [], 'May': [], 'Jul': [], 'Aug': [], 'Sep': [], 'Oct': [], 'Nov': [], 'Dec': []}
+months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+moods = {}
 
 def userInput() -> None:
     """
@@ -21,8 +22,21 @@ def userInput() -> None:
     print("Welcome to your mood tracker Aleksandra!\n We hope that you are doing well. Please enter how you are feeling based on the following scale:\n")
     print("Sad | Irritable | Angry | Withdrawn | Sociable | Calm | Happy")
     m = input("How are you feeling today?")
+    s = datetime.date.today().month
+    
+    if months[s - 1] in moods.keys():
+        moods[months[s - 1]].append(m)
+    else:
+        moods[months[s - 1]] = [m]
+
+    print(moods)
     
 
     
+def main() -> None:
+    while 1:
+        userInput()
+
+main()
 
 
