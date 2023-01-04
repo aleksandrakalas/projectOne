@@ -34,8 +34,10 @@ def userInput() -> None:
 
     
 def main() -> None:
-    while 1:
+    continuation = input("Would you like to open the mood tracker? Please enter Y for yes or N for no")
+    while (continuation == 'N' or continuation == 'n' or continuation == 'no' or continuation == 'No'):
         userInput()
+    print('Have a nice day!')
 
 main()
 
