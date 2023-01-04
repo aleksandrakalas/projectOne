@@ -1,4 +1,5 @@
 import datetime
+from io import TextIOWrapper
 """
 The project is to begin as a simple mood tracker. It will ask everyday the mood of the individual and input it into the library of previous moods.
 
@@ -15,7 +16,7 @@ Completed: --/--/----
 months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 moods = {}
 
-def userInput() -> None:
+def userInput(m: TextIOWrapper) -> None:
     """
     Ask for user input for their mood and add to the corresponding month in moods dictionary.
     """
@@ -35,8 +36,10 @@ def userInput() -> None:
     
 def main() -> None:
     continuation = input("Would you like to open the mood tracker? Please enter Y for yes or N for no")
-    while (continuation == 'N' or continuation == 'n' or continuation == 'no' or continuation == 'No'):
-        userInput()
+    while (continuation == 'Y' or continuation == 'y' or continuation == 'Yes' or continuation == 'yes'):
+        moodFile = open("moods.txt", "a")
+        userInput(moodFile)
+        continuation = input("Would you like to open the mood tracker? Please enter Y for yes or N for no")
     print('Have a nice day!')
 
 main()
